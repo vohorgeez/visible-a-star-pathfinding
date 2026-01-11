@@ -4,17 +4,14 @@ class Program
 {
     static void Main()
     {
-        int width = 3;
-        int height = 3;
+        Grid grid = new Grid(3,3);
+        grid.SetBlocked(1, 2, true);
 
-        bool[,] blocked = new bool[width, height];
-        blocked[1,2] = true;
-
-        for (int x = 0; x < width; x++)
+        for (int y = 0; y < grid.Height; y++)
         {
-            for (int y = 0; y < height; y++)
+            for (int x = 0; x < grid.Width; x++)
             {
-                string cellState = blocked[x, y] ? "X" : ".";
+                string cellState = grid.IsBlocked(x, y) ? "X" : ".";
                 Console.WriteLine($"Cell ({x},{y}) = {cellState}");
             }
         }
