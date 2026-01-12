@@ -15,5 +15,12 @@ class Program
                 Console.WriteLine($"Cell ({x},{y}) = {cellState}");
             }
         }
+
+        Console.WriteLine("Neighbors of (0,0):");
+
+        foreach (var n in grid.GetNeighbors4(0, 0))
+        {
+            Console.WriteLine($" -> ({n.x},{n.y})");
+        }
     }
 }
