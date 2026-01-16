@@ -38,4 +38,21 @@ public class AStarPathfinderTests
         Assert.That(path!.Count, Is.EqualTo(5),
             "Path should have minimal length on empty grid.");
     }
+
+    [Test]
+    public void FindPath_BlockedStartNeighbors_ReturnsNull()
+    {
+        // Arrange
+        var grid = new Grid(3, 3);
+        grid.SetBlocked(1, 0, true);
+        grid.SetBlocked(0, 1, true);
+
+        var pathfinder = new AStarPathfinder();
+
+        // Act
+        var path = pathfinder.FindPath(grid, (0, 0), (2, 2));
+
+        // Assert
+        Assert.That(path, Is.Null, "Path should be null when start is trapped.");
+    }
 }
