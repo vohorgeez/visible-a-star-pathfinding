@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.VisualBasic;
 
-public class AStarPathFinder
+public class AStarPathfinder
 {
     public List<(int x, int y)>? FindPath(Grid grid, (int x, int y) start, (int x, int y) goal)
     {

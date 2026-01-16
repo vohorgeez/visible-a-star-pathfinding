@@ -12,7 +12,7 @@ class Program
         grid.SetCost(2, 2, 5);
         grid.SetCost(2, 3, 5);
 
-        var pathfinder = new AStarPathFinder();
+        var pathfinder = new AStarPathfinder();
         var path = pathfinder.FindPath(grid, (0, 0), (4, 4));
 
         if (path == null || path.Count == 0)
