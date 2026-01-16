@@ -55,4 +55,24 @@ public class AStarPathfinderTests
         // Assert
         Assert.That(path, Is.Null, "Path should be null when start is trapped.");
     }
+
+    [Test]
+    public void FindPath_AvoidsExpensiveTerrain()
+    {
+        // Arrange
+        var grid = new Grid(3, 3);
+        grid.SetCost(1, 1, 10); // terrain cher au centre
+
+        var pathfinder = new AStarPathfinder();
+
+        // Act
+        var path = pathfinder.FindPath(grid, (0, 0), (2, 2));
+
+        // Assert
+        Assert.That(path, Is.Not.Null);
+
+        // Le chemin ne doit PAS passer par la case chère
+        Assert.That(path, Does.Not.Contain((1, 1)),
+            "A* should avoid expensive terrain even if path is longer or equal in steps.");
+    }
 }
